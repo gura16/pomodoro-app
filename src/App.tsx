@@ -1,11 +1,13 @@
 import { createGlobalStyle } from "styled-components";
 import CircularCountdown from "./CircularCountdown";
+import Timer from "./timer";
 
 const App: React.FC = () => {
   return (
     <div>
       <GlobalStyles />
-      <CircularCountdown />
+      {/* <CircularCountdown /> */}
+      <Timer />
     </div>
   );
 };
@@ -13,6 +15,13 @@ const App: React.FC = () => {
 export default App;
 const GlobalStyles = createGlobalStyle` 
 
+
+body{
+  background-color:#1E213F;
+  display:flex;
+  justify-content:center;
+  margin-top: 100px;  
+}
  
   *{
     margin: 0;
