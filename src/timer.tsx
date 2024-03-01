@@ -1,19 +1,67 @@
 import { CircularProgressbar } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 import styled from "styled-components";
+import { useEffect, useState } from "react";
 
 function Timer() {
+  const totalTime = 960; // Total time in seconds
+  const [progress, setProgress] = useState<number>(100);
+  const [timer, setTimer] = useState<number>(totalTime);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      // Update the timer
+      setTimer((prevTimer) => {
+        const newTimer = prevTimer - 1;
+
+        // Calculate the progress based on remaining time
+        const remainingTimeRatio = newTimer / totalTime;
+        const calculatedProgress = remainingTimeRatio * 100;
+
+        // Update the progress
+        setProgress(calculatedProgress);
+
+        // Check if the timer has reached 0 and clear the interval
+        if (newTimer === 0) {
+          clearInterval(interval);
+        }
+
+        return newTimer;
+      });
+    }, 1000);
+
+    // Clean up the interval when the component is unmounted
+    return () => clearInterval(interval);
+  }, [totalTime]);
+
+  const formatTime = (seconds: number) => {
+    const minutes = Math.floor(seconds / 60);
+    const remainingSeconds = seconds % 60;
+    return `${minutes}:${remainingSeconds < 10 ? "0" : ""}${remainingSeconds}`;
+  };
+
   return (
     <div className="App">
       <CountdownTimercard>
         <CountdownTimercardsmall>
           <div style={{ width: 248, height: 248 }}>
             <CircularProgressbar
-              value={60}
+              text={`${formatTime(timer)}`}
+              value={progress}
               strokeWidth={4}
               styles={{
-                path: { stroke: "#F87070" }, // Change the color of the progress path
-                trail: { stroke: "#161932" }, // Change the color of the trail path
+                path: { stroke: "#F87070" },
+                trail: { stroke: "#161932" },
+                text: {
+                  fontSize: "35px",
+                  fontWeight: 700,
+                  lineHeight: "99px",
+                  letterSpacing: "-2px",
+                  textAlign: "center",
+                  width: "147px",
+                  height: "80px",
+                  color: "ffffff",
+                },
               }}
             />
           </div>
