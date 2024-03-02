@@ -1,12 +1,11 @@
 import { createGlobalStyle } from "styled-components";
-
-import Timer from "./timer";
-
+import Timer from "./timercomponent";
+import Toggle from "./togglecomponent";
 const App: React.FC = () => {
   return (
     <div>
       <GlobalStyles />
-      {/* <CircularCountdown /> */}
+      <Toggle />
       <Timer />
     </div>
   );
@@ -21,7 +20,8 @@ body{
   background-color:#1E213F;
   display:flex;
   justify-content:center;
-  margin-top: 100px;  
+  text-align: center;
+  margin-top: 40px;  
   font-family: "Kumbh Sans", sans-serif;
 }
  

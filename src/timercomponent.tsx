@@ -41,7 +41,7 @@ function Timer() {
   };
 
   return (
-    <div className="App">
+    <div>
       <CountdownTimercard>
         <CountdownTimercardsmall>
           <div style={{ width: 248, height: 248 }}>
@@ -81,6 +81,8 @@ const CountdownTimercard = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  margin: auto;
+  margin-top: 30px;
   box-shadow: 50px 50px 100px 0 #121530, -50px -50px 100px 0 #272c5a;
 `;
 
