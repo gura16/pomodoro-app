@@ -4,24 +4,20 @@ import styled from "styled-components";
 import { useEffect, useState } from "react";
 
 function Timer() {
-  const totalTime = 960; // Total time in seconds
+  const totalTime = 180;
   const [progress, setProgress] = useState<number>(100);
   const [timer, setTimer] = useState<number>(totalTime);
 
   useEffect(() => {
     const interval = setInterval(() => {
-      // Update the timer
       setTimer((prevTimer) => {
         const newTimer = prevTimer - 1;
 
-        // Calculate the progress based on remaining time
         const remainingTimeRatio = newTimer / totalTime;
         const calculatedProgress = remainingTimeRatio * 100;
 
-        // Update the progress
         setProgress(calculatedProgress);
 
-        // Check if the timer has reached 0 and clear the interval
         if (newTimer === 0) {
           clearInterval(interval);
         }
@@ -30,7 +26,6 @@ function Timer() {
       });
     }, 1000);
 
-    // Clean up the interval when the component is unmounted
     return () => clearInterval(interval);
   }, [totalTime]);
 
@@ -64,6 +59,7 @@ function Timer() {
                 },
               }}
             />
+            <Pause>PAUSE</Pause>
           </div>
         </CountdownTimercardsmall>
       </CountdownTimercard>
@@ -94,4 +90,19 @@ const CountdownTimercardsmall = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
+`;
+
+const Pause = styled.p`
+  position: absolute;
+  font-family: "Kumbh Sans", sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 17px;
+  letter-spacing: 13.125px;
+  text-align: left;
+  color: #d7e0ff;
+  bottom: 60px;
+  right: 70px;
+  cursor: pointer;
 `;

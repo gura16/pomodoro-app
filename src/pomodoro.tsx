@@ -58,6 +58,7 @@ const Pomodoro = styled.div`
   height: 48px;
   background-color: #f87070;
   border-radius: 40px;
+  cursor: pointer;
 `;
 
 const Shortbreak = styled.div`
@@ -74,6 +75,7 @@ const Shortbreak = styled.div`
   height: 48px;
   /* background-color: #f87070; */
   border-radius: 40px;
+  cursor: pointer;
 `;
 
 const Longbreak = styled.div`
@@ -90,4 +92,5 @@ const Longbreak = styled.div`
   height: 48px;
   /* background-color: #f87070; */
   border-radius: 40px;
+  cursor: pointer;
 `;

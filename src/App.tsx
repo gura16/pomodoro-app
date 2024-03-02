@@ -1,12 +1,14 @@
 import { createGlobalStyle } from "styled-components";
-import Timer from "./timercomponent";
-import Toggle from "./togglecomponent";
+import PomodoroTimer from "./pomodorotimer";
+import Pomodoro from "./pomodoro";
+import Shortbreaktimer from "./shortbreaktimer";
 const App: React.FC = () => {
   return (
     <div>
       <GlobalStyles />
-      <Toggle />
-      <Timer />
+      <Pomodoro />
+      {/* <PomodoroTimer /> */}
+      <Shortbreaktimer />
     </div>
   );
 };
