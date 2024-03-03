@@ -1,17 +1,41 @@
 import styled from "styled-components";
 import React, { useState } from "react";
+import Timer from "./pomodorotimer";
 
 function Toggle() {
+  const [selectedOption, setSelectedOption] = useState<number>(1500);
+
   return (
     <>
       <Togglecontainer>
         <Pomodorotitle>pomodoro</Pomodorotitle>
         <Togglecard>
-          <Pomodoro>pomodoro</Pomodoro>
-          <Shortbreak>short break</Shortbreak>
-          <Longbreak>long break</Longbreak>
+          {/* Pass the state and its setter function as props */}
+          <Pomodoro
+            onClick={() => setSelectedOption(25)}
+            selected={selectedOption === 25}
+          >
+            pomodoro
+          </Pomodoro>
+          <Shortbreak
+            onClick={() => setSelectedOption(5)}
+            selected={selectedOption === 5}
+          >
+            short break
+          </Shortbreak>
+          <Longbreak
+            onClick={() => setSelectedOption(10)}
+            selected={selectedOption === 10}
+          >
+            long break
+          </Longbreak>
         </Togglecard>
       </Togglecontainer>
+      {/* Step 2: Pass the state and its setter function as props */}
+      <Timer
+        selectedOption={selectedOption}
+        setSelectedOption={setSelectedOption}
+      />
     </>
   );
 }

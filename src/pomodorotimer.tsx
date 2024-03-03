@@ -3,12 +3,17 @@ import "react-circular-progressbar/dist/styles.css";
 import styled from "styled-components";
 import { useEffect, useState } from "react";
 
-function Timer() {
-  const totalTime = 960;
+function Timer({ selectedOption, setSelectedOption }) {
+  useEffect(() => {
+    // console.log("Selected option:", selectedOption);
+  }, [selectedOption]);
+
+  const totalTime = selectedOption;
   const [progress, setProgress] = useState<number>(100);
   const [timer, setTimer] = useState<number>(totalTime);
 
   useEffect(() => {
+    console.log(totalTime);
     const interval = setInterval(() => {
       setTimer((prevTimer) => {
         const newTimer = prevTimer - 1;
