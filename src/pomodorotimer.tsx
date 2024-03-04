@@ -3,36 +3,16 @@ import "react-circular-progressbar/dist/styles.css";
 import styled from "styled-components";
 import { useEffect, useState } from "react";
 
-function Timer({ selectedOption, setSelectedOption }) {
-  useEffect(() => {
-    // console.log("Selected option:", selectedOption);
-  }, [selectedOption]);
-
-  const totalTime = selectedOption;
+function Timer({ selectedOption, setSelectedOption, defaultTimer }) {
   const [progress, setProgress] = useState<number>(100);
-  const [timer, setTimer] = useState<number>(totalTime);
+  const [intervalId, setIntervarId] = useState<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
-    console.log(totalTime);
-    const interval = setInterval(() => {
-      setTimer((prevTimer) => {
-        const newTimer = prevTimer - 1;
-
-        const remainingTimeRatio = newTimer / totalTime;
-        const calculatedProgress = remainingTimeRatio * 100;
-
-        setProgress(calculatedProgress);
-
-        if (newTimer === 0) {
-          clearInterval(interval);
-        }
-
-        return newTimer;
-      });
-    }, 1000);
-
-    return () => clearInterval(interval);
-  }, [totalTime]);
+    setProgress(100);
+    if (intervalId) {
+      clearInterval(intervalId);
+    }
+  }, [defaultTimer]);
 
   const formatTime = (seconds: number) => {
     const minutes = Math.floor(seconds / 60);
@@ -42,11 +22,34 @@ function Timer({ selectedOption, setSelectedOption }) {
 
   return (
     <div>
-      <CountdownTimercard>
+      <CountdownTimercard
+        onClick={() => {
+          setProgress(100), setSelectedOption(defaultTimer);
+          const interval = setInterval(() => {
+            setSelectedOption((prewTimer: number) => {
+              const newTimer = prewTimer - 1;
+              const remainingTimeRatio = newTimer / defaultTimer;
+              const calculatedProgress = remainingTimeRatio * 100;
+              setProgress(calculatedProgress);
+              if (newTimer <= 0) {
+                clearInterval(interval);
+                return 0;
+              }
+              return newTimer;
+            });
+          }, 1000);
+          setIntervarId(interval);
+          return () => {
+            if (intervalId) {
+              clearInterval(intervalId);
+            }
+          };
+        }}
+      >
         <CountdownTimercardsmall>
           <div style={{ width: 248, height: 248 }}>
             <CircularProgressbar
-              text={`${formatTime(timer)}`}
+              text={`${formatTime(selectedOption)}`}
               value={progress}
               strokeWidth={4}
               styles={{

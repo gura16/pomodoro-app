@@ -10,8 +10,6 @@ const App: React.FC = () => {
       <GlobalStyles />
       <Pomodoro />
       {/* <PomodoroTimer /> */}
-      {/* <Shortbreaktimer />
-      <Longbreaktimer /> */}
     </div>
   );
 };

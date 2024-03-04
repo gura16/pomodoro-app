@@ -3,38 +3,44 @@ import React, { useState } from "react";
 import Timer from "./pomodorotimer";
 
 function Toggle() {
-  const [selectedOption, setSelectedOption] = useState<number>(1500);
+  const [timer, setTimer] = useState<number>(1500);
+  const [defaultTimer, setDefaultTimer] = useState<number>(1500);
 
   return (
     <>
       <Togglecontainer>
         <Pomodorotitle>pomodoro</Pomodorotitle>
         <Togglecard>
-          {/* Pass the state and its setter function as props */}
           <Pomodoro
-            onClick={() => setSelectedOption(25)}
-            selected={selectedOption === 25}
+            onClick={() => {
+              setTimer(25), setDefaultTimer(25);
+            }}
+            selected={timer === 25}
           >
             pomodoro
           </Pomodoro>
           <Shortbreak
-            onClick={() => setSelectedOption(5)}
-            selected={selectedOption === 5}
+            onClick={() => {
+              setTimer(5), setDefaultTimer(5);
+            }}
+            selected={timer === 5}
           >
             short break
           </Shortbreak>
           <Longbreak
-            onClick={() => setSelectedOption(10)}
-            selected={selectedOption === 10}
+            onClick={() => {
+              setTimer(10), setDefaultTimer(10);
+            }}
+            selected={timer === 10}
           >
             long break
           </Longbreak>
         </Togglecard>
       </Togglecontainer>
-      {/* Step 2: Pass the state and its setter function as props */}
       <Timer
-        selectedOption={selectedOption}
-        setSelectedOption={setSelectedOption}
+        selectedOption={timer}
+        setSelectedOption={setTimer}
+        defaultTimer={defaultTimer}
       />
     </>
   );
