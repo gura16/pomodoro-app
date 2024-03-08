@@ -22,30 +22,7 @@ function Timer({ selectedOption, setSelectedOption, defaultTimer }) {
 
   return (
     <div>
-      <CountdownTimercard
-        onClick={() => {
-          setProgress(100), setSelectedOption(defaultTimer);
-          const interval = setInterval(() => {
-            setSelectedOption((prewTimer: number) => {
-              const newTimer = prewTimer - 1;
-              const remainingTimeRatio = newTimer / defaultTimer;
-              const calculatedProgress = remainingTimeRatio * 100;
-              setProgress(calculatedProgress);
-              if (newTimer <= 0) {
-                clearInterval(interval);
-                return 0;
-              }
-              return newTimer;
-            });
-          }, 1000);
-          setIntervarId(interval);
-          return () => {
-            if (intervalId) {
-              clearInterval(intervalId);
-            }
-          };
-        }}
-      >
+      <CountdownTimercard>
         <CountdownTimercardsmall>
           <div style={{ width: 248, height: 248 }}>
             <CircularProgressbar
@@ -67,7 +44,32 @@ function Timer({ selectedOption, setSelectedOption, defaultTimer }) {
                 },
               }}
             />
-            <Pause>PAUSE</Pause>
+            <Pause
+              onClick={() => {
+                setProgress(100), setSelectedOption(defaultTimer);
+                const interval = setInterval(() => {
+                  setSelectedOption((prewTimer: number) => {
+                    const newTimer = prewTimer - 1;
+                    const remainingTimeRatio = newTimer / defaultTimer;
+                    const calculatedProgress = remainingTimeRatio * 100;
+                    setProgress(calculatedProgress);
+                    if (newTimer <= 0) {
+                      clearInterval(interval);
+                      return 0;
+                    }
+                    return newTimer;
+                  });
+                }, 1000);
+                setIntervarId(interval);
+                return () => {
+                  if (intervalId) {
+                    clearInterval(intervalId);
+                  }
+                };
+              }}
+            >
+              PAUSE
+            </Pause>
           </div>
         </CountdownTimercardsmall>
       </CountdownTimercard>
