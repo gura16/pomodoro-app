@@ -86,7 +86,7 @@ const Pomodoro = styled.div`
   color: #d7e0ff;
   width: 105.2px;
   height: 48px;
-  background-color: #f87070;
+  background-color: ${(props) => (props.selected ? "#f87070" : "transparent")};
   border-radius: 40px;
   cursor: pointer;
 `;
@@ -103,7 +103,7 @@ const Shortbreak = styled.div`
   color: #d7e0ff;
   width: 105.2px;
   height: 48px;
-  /* background-color: #f87070; */
+  background-color: ${(props) => (props.selected ? "#f87070" : "transparent")};
   border-radius: 40px;
   cursor: pointer;
 `;
@@ -120,7 +120,7 @@ const Longbreak = styled.div`
   color: #d7e0ff;
   width: 105.2px;
   height: 48px;
-  /* background-color: #f87070; */
+  background-color: ${(props) => (props.selected ? "#f87070" : "transparent")};
   border-radius: 40px;
   cursor: pointer;
 `;
