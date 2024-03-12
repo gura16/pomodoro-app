@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 
 function Timer({ selectedOption, setSelectedOption, defaultTimer }) {
   const [progress, setProgress] = useState<number>(100);
-  const [intervalId, setIntervarId] = useState<NodeJS.Timeout | null>(null);
+  const [intervalId, setIntervalId] = useState<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
     setProgress(100);
@@ -18,6 +18,39 @@ function Timer({ selectedOption, setSelectedOption, defaultTimer }) {
     const minutes = Math.floor(seconds / 60);
     const remainingSeconds = seconds % 60;
     return `${minutes}:${remainingSeconds < 10 ? "0" : ""}${remainingSeconds}`;
+  };
+
+  const handlePause = () => {
+    if (intervalId) {
+      clearInterval(intervalId);
+      setIntervalId(null);
+    }
+  };
+
+  const handleStart = () => {
+    setProgress(100);
+
+    if (selectedOption === 0) {
+      setSelectedOption(defaultTimer);
+    }
+
+    const interval = setInterval(() => {
+      setSelectedOption((prevTimer: number) => {
+        const newTimer = prevTimer - 1;
+        const remainingTimeRatio = newTimer / defaultTimer;
+        const calculatedProgress = remainingTimeRatio * 100;
+        setProgress(calculatedProgress);
+
+        if (newTimer <= 0) {
+          clearInterval(interval);
+          return 0;
+        }
+
+        return newTimer;
+      });
+    }, 1000);
+
+    setIntervalId(interval);
   };
 
   return (
@@ -44,31 +77,8 @@ function Timer({ selectedOption, setSelectedOption, defaultTimer }) {
                 },
               }}
             />
-            <Pause
-              onClick={() => {
-                setProgress(100), setSelectedOption(defaultTimer);
-                const interval = setInterval(() => {
-                  setSelectedOption((prewTimer: number) => {
-                    const newTimer = prewTimer - 1;
-                    const remainingTimeRatio = newTimer / defaultTimer;
-                    const calculatedProgress = remainingTimeRatio * 100;
-                    setProgress(calculatedProgress);
-                    if (newTimer <= 0) {
-                      clearInterval(interval);
-                      return 0;
-                    }
-                    return newTimer;
-                  });
-                }, 1000);
-                setIntervarId(interval);
-                return () => {
-                  if (intervalId) {
-                    clearInterval(intervalId);
-                  }
-                };
-              }}
-            >
-              PAUSE
+            <Pause onClick={intervalId ? handlePause : handleStart}>
+              {intervalId ? "PAUSE" : "START"}
             </Pause>
           </div>
         </CountdownTimercardsmall>
