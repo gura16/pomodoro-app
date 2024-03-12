@@ -1,6 +1,7 @@
 import { CircularProgressbar } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 import styled from "styled-components";
+import setting_img from "../public/setting_img.svg";
 import { useEffect, useState } from "react";
 
 function Timer({ selectedOption, setSelectedOption, defaultTimer }) {
@@ -83,6 +84,7 @@ function Timer({ selectedOption, setSelectedOption, defaultTimer }) {
           </div>
         </CountdownTimercardsmall>
       </CountdownTimercard>
+      <Imgsetting src={setting_img} />
     </div>
   );
 }
@@ -124,5 +126,11 @@ const Pause = styled.p`
   color: #d7e0ff;
   bottom: 60px;
   right: 70px;
+  cursor: pointer;
+`;
+
+const Imgsetting = styled.img`
+  margin-top: 50px;
+  margin-bottom: 20px;
   cursor: pointer;
 `;

@@ -5,6 +5,7 @@ import Timer from "./pomodorotimer";
 function Toggle() {
   const [timer, setTimer] = useState<number>(1500);
   const [defaultTimer, setDefaultTimer] = useState<number>(1500);
+  const [color, setColor] = useState<number>(0);
 
   return (
     <>
@@ -14,24 +15,30 @@ function Toggle() {
           <Pomodoro
             onClick={() => {
               setTimer(25), setDefaultTimer(25);
+              setColor(0);
             }}
             selected={timer === 25}
+            color={color === 0}
           >
             pomodoro
           </Pomodoro>
           <Shortbreak
             onClick={() => {
               setTimer(5), setDefaultTimer(5);
+              setColor(1);
             }}
             selected={timer === 5}
+            color={color === 1}
           >
             short break
           </Shortbreak>
           <Longbreak
             onClick={() => {
               setTimer(10), setDefaultTimer(10);
+              setColor(2);
             }}
             selected={timer === 10}
+            color={color === 2}
           >
             long break
           </Longbreak>
@@ -86,7 +93,7 @@ const Pomodoro = styled.div`
   color: #d7e0ff;
   width: 105.2px;
   height: 48px;
-  background-color: ${(props) => (props.selected ? "#f87070" : "transparent")};
+  background-color: ${(props) => (props.color ? "#f87070" : "transparent")};
   border-radius: 40px;
   cursor: pointer;
 `;
@@ -103,7 +110,7 @@ const Shortbreak = styled.div`
   color: #d7e0ff;
   width: 105.2px;
   height: 48px;
-  background-color: ${(props) => (props.selected ? "#f87070" : "transparent")};
+  background-color: ${(props) => (props.color ? "#f87070" : "transparent")};
   border-radius: 40px;
   cursor: pointer;
 `;
@@ -120,7 +127,7 @@ const Longbreak = styled.div`
   color: #d7e0ff;
   width: 105.2px;
   height: 48px;
-  background-color: ${(props) => (props.selected ? "#f87070" : "transparent")};
+  background-color: ${(props) => (props.color ? "#f87070" : "transparent")};
   border-radius: 40px;
   cursor: pointer;
 `;
