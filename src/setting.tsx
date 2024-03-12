@@ -25,7 +25,17 @@ function Setting() {
               <Titletext>long break</Titletext>
               <Longinput type="number" min="0"></Longinput>
             </Card>
+            <Hr />
           </TimechangerCard>
+          <FontchangerContainer>
+            <Fonttitle>FONT</Fonttitle>
+            <Fontcard>
+              <Font>Aa</Font>
+              <Font>Aa</Font>
+              <Font>Aa</Font>
+            </Fontcard>
+            <Hr />
+          </FontchangerContainer>
         </TimechangerContainer>
       </Maincontainer>
     </div>
@@ -60,7 +70,7 @@ const Cancelimg = styled.img``;
 
 const Hr = styled.p`
   background-color: #e3e1e1;
-  width: 327px;
+  width: 100%;
   height: 1px;
   margin-top: 10px;
 `;
@@ -74,7 +84,7 @@ const Timetitle = styled.p`
   line-height: 14px;
   letter-spacing: 4.230769157409668px;
   text-align: center;
-  margin-top: 20px;
+  margin-top: 15px;
 `;
 
 const TimechangerCard = styled.div`
@@ -144,4 +154,42 @@ const Longinput = styled.input`
   line-height: 17px;
   letter-spacing: 0px;
   text-align: left;
+`;
+
+const FontchangerContainer = styled.div`
+  padding: 0 20px;
+`;
+
+const Fonttitle = styled.p`
+  font-family: "Kumbh Sans", sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 14px;
+  letter-spacing: 4.230769157409668px;
+  text-align: center;
+  color: #161932;
+  margin-top: 20px;
+`;
+
+const Fontcard = styled.div`
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 15px;
+`;
+const Font = styled.div`
+  width: 40px;
+  height: 40px;
+  background-color: #eff1fa;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Kumbh Sans", sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 19px;
+  letter-spacing: 0px;
+  text-align: left;
+  margin-bottom: 10px;
 `;
