@@ -9,7 +9,7 @@ const App: React.FC = () => {
   return (
     <div>
       <GlobalStyles />
-      <Pomodoro />
+      {/* <Pomodoro /> */}
       {/* <PomodoroTimer /> */}
       <Setting />
     </div>

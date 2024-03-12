@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import cancel from "../public/cancel.svg";
+import Path from "../public/Path.svg";
 
 function Setting() {
   return (
@@ -36,7 +37,18 @@ function Setting() {
             </Fontcard>
             <Hr />
           </FontchangerContainer>
+          <Colorchangercontainer>
+            <Color>COLOR</Color>
+            <Circlecard>
+              <Circle1>
+                <img src={Path} />
+              </Circle1>
+              <Circle2></Circle2>
+              <Circle3></Circle3>
+            </Circlecard>
+          </Colorchangercontainer>
         </TimechangerContainer>
+        <Apply>Apply</Apply>
       </Maincontainer>
     </div>
   );
@@ -49,6 +61,8 @@ const Maincontainer = styled.div`
   height: 549px;
   background-color: white;
   border-radius: 20px;
+  margin-bottom: 50px;
+  position: relative;
 `;
 
 const Titlecard = styled.div`
@@ -192,4 +206,59 @@ const Font = styled.div`
   letter-spacing: 0px;
   text-align: left;
   margin-bottom: 10px;
+`;
+
+const Colorchangercontainer = styled.div``;
+
+const Color = styled.p`
+  font-family: "Kumbh Sans", sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 14px;
+  letter-spacing: 4.230769157409668px;
+  text-align: center;
+  margin-top: 15px;
+`;
+
+const Circlecard = styled.div`
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 15px;
+`;
+
+const Circle1 = styled.div`
+  width: 40px;
+  height: 40px;
+  background-color: #f87070;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+const Circle2 = styled.div`
+  width: 40px;
+  height: 40px;
+  background-color: #70f3f8;
+  border-radius: 50%;
+`;
+const Circle3 = styled.div`
+  width: 40px;
+  height: 40px;
+  background-color: #d881f8;
+  border-radius: 50%;
+`;
+
+const Apply = styled.div`
+  width: 140px;
+  height: 53px;
+  background-color: #f87070;
+  border-radius: 40px;
+  position: absolute;
+  bottom: -25px;
+  right: 90px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
 `;
