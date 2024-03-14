@@ -1,55 +1,67 @@
 import styled from "styled-components";
 import cancel from "../public/cancel.svg";
 import Path from "../public/Path.svg";
+import Pomodoro from "./pomodoro";
+import setting_img from "../public/setting_img.svg";
+import { useState } from "react";
 
 function Setting() {
+  const [settingButton, setSettingButton] = useState<boolean>(false);
   return (
     <div>
-      <Maincontainer>
-        <Titlecard>
-          <Title>Settings</Title>
-          <Cancelimg src={cancel} />
-        </Titlecard>
-        <Hr />
-        <TimechangerContainer>
-          <Timetitle>TIME (MINUTES)</Timetitle>
-          <TimechangerCard>
-            <Card>
-              <Titletext>pomodoro</Titletext>
-              <PomodoroInput type="number" min="0"></PomodoroInput>
-            </Card>
-            <Card>
-              <Titletext>short break</Titletext>
-              <Shortinput type="number" min="0"></Shortinput>
-            </Card>
-            <Card>
-              <Titletext>long break</Titletext>
-              <Longinput type="number" min="0"></Longinput>
-            </Card>
-            <Hr />
-          </TimechangerCard>
-          <FontchangerContainer>
-            <Fonttitle>FONT</Fonttitle>
-            <Fontcard>
-              <Font>Aa</Font>
-              <Font>Aa</Font>
-              <Font>Aa</Font>
-            </Fontcard>
-            <Hr />
-          </FontchangerContainer>
-          <Colorchangercontainer>
-            <Color>COLOR</Color>
-            <Circlecard>
-              <Circle1>
-                <img src={Path} />
-              </Circle1>
-              <Circle2></Circle2>
-              <Circle3></Circle3>
-            </Circlecard>
-          </Colorchangercontainer>
-        </TimechangerContainer>
-        <Apply>Apply</Apply>
-      </Maincontainer>
+      {settingButton ? (
+        <Maincontainer>
+          <Titlecard>
+            <Title>Settings</Title>
+            <Cancelimg onClick={() => setSettingButton(false)} src={cancel} />
+          </Titlecard>
+          <Hr />
+          <TimechangerContainer>
+            <Timetitle>TIME (MINUTES)</Timetitle>
+            <TimechangerCard>
+              <Card>
+                <Titletext>pomodoro</Titletext>
+                <PomodoroInput type="number" min="0"></PomodoroInput>
+              </Card>
+              <Card>
+                <Titletext>short break</Titletext>
+                <Shortinput type="number" min="0"></Shortinput>
+              </Card>
+              <Card>
+                <Titletext>long break</Titletext>
+                <Longinput type="number" min="0"></Longinput>
+              </Card>
+              <Hr />
+            </TimechangerCard>
+            <FontchangerContainer>
+              <Fonttitle>FONT</Fonttitle>
+              <Fontcard>
+                <Font>Aa</Font>
+                <Font>Aa</Font>
+                <Font>Aa</Font>
+              </Fontcard>
+              <Hr />
+            </FontchangerContainer>
+            <Colorchangercontainer>
+              <Color>COLOR</Color>
+              <Circlecard>
+                <Circle1>
+                  <img src={Path} />
+                </Circle1>
+                <Circle2></Circle2>
+                <Circle3></Circle3>
+              </Circlecard>
+            </Colorchangercontainer>
+          </TimechangerContainer>
+          <Apply>Apply</Apply>
+        </Maincontainer>
+      ) : null}
+
+      <Pomodoro />
+      <Imgsetting
+        onClick={() => setSettingButton(!settingButton)}
+        src={setting_img}
+      />
     </div>
   );
 }
@@ -61,8 +73,10 @@ const Maincontainer = styled.div`
   height: 549px;
   background-color: white;
   border-radius: 20px;
-  margin-bottom: 50px;
-  position: relative;
+  bottom: 30px;
+  position: absolute;
+  z-index: 1;
+  /* position: relative; */
 `;
 
 const Titlecard = styled.div`
@@ -261,4 +275,10 @@ const Apply = styled.div`
   justify-content: center;
   align-items: center;
   color: white;
+`;
+
+const Imgsetting = styled.img`
+  margin-top: 50px;
+  margin-bottom: 20px;
+  cursor: pointer;
 `;

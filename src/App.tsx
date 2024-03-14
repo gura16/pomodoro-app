@@ -1,16 +1,10 @@
 import { createGlobalStyle } from "styled-components";
-import PomodoroTimer from "./pomodorotimer";
-import Pomodoro from "./pomodoro";
-import Shortbreaktimer from "./shortbreaktimer";
-import Longbreaktimer from "./longbreaktimer";
 import Setting from "./setting";
 
 const App: React.FC = () => {
   return (
     <div>
       <GlobalStyles />
-      {/* <Pomodoro /> */}
-      {/* <PomodoroTimer /> */}
       <Setting />
     </div>
   );
