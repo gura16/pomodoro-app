@@ -8,10 +8,20 @@ function Toggle(props) {
   const [color, setColor] = useState<number>(0);
 
   useEffect(() => {
-    // Update timer state whenever props.pomodoro changes
+    setTimer(props.shortbreak);
+    setDefaultTimer(props.shortbreak);
+  }, [props.shortbreak]);
+
+  useEffect(() => {
+    setTimer(props.longbreak);
+    setDefaultTimer(props.longbreak);
+  }, [props.longbreak]);
+
+  useEffect(() => {
     setTimer(props.pomodoro);
     setDefaultTimer(props.pomodoro);
-  }, [props.pomodoro]); // Dependency array ensures effect runs when props.pomodoro changes
+    setColor(0);
+  }, [props.pomodoro]);
 
   return (
     <>
@@ -30,7 +40,7 @@ function Toggle(props) {
           </Pomodoro>
           <Shortbreak
             onClick={() => {
-              setTimer(5), setDefaultTimer(5);
+              setTimer(props.shortbreak), setDefaultTimer(props.shortbreak);
               setColor(1);
             }}
             selected={timer === 5}
@@ -40,7 +50,7 @@ function Toggle(props) {
           </Shortbreak>
           <Longbreak
             onClick={() => {
-              setTimer(10), setDefaultTimer(10);
+              setTimer(props.longbreak), setDefaultTimer(props.longbreak);
               setColor(2);
             }}
             selected={timer === 10}

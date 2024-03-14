@@ -9,9 +9,15 @@ function Setting() {
   const [settingButton, setSettingButton] = useState<boolean>(false);
   const [pomodoro, SetPomodoro] = useState<number>(25);
   const [pomodoroApply, setPomodoroApply] = useState<number>(pomodoro);
+  const [shortbreak, setshortBreak] = useState<number>(5);
+  const [shortApply, setshortApply] = useState<number>(shortbreak);
+  const [longbreak, setlongBreak] = useState<number>(10);
+  const [longApply, setlongApply] = useState<number>(longbreak);
 
   const settingsButton = () => {
     setPomodoroApply(pomodoro);
+    setshortApply(shortbreak);
+    setlongApply(longbreak);
     setSettingButton(false);
   };
 
@@ -38,11 +44,21 @@ function Setting() {
               </Card>
               <Card>
                 <Titletext>short break</Titletext>
-                <Shortinput type="number" min="0"></Shortinput>
+                <Shortinput
+                  type="number"
+                  min="0"
+                  value={shortbreak}
+                  onChange={(event) => setshortBreak(event.target.value)}
+                ></Shortinput>
               </Card>
               <Card>
                 <Titletext>long break</Titletext>
-                <Longinput type="number" min="0"></Longinput>
+                <Longinput
+                  type="number"
+                  min="0"
+                  value={longbreak}
+                  onChange={(event) => setlongBreak(event.target.value)}
+                ></Longinput>
               </Card>
               <Hr />
             </TimechangerCard>
@@ -70,7 +86,11 @@ function Setting() {
         </Maincontainer>
       ) : null}
 
-      <Pomodoro pomodoro={pomodoroApply * 60} />
+      <Pomodoro
+        pomodoro={pomodoroApply * 60}
+        shortbreak={shortApply * 60}
+        longbreak={longApply * 60}
+      />
       <Imgsetting
         onClick={() => setSettingButton(!settingButton)}
         src={setting_img}

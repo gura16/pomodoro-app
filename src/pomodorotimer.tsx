@@ -107,7 +107,7 @@ const CountdownTimercard = styled.div`
   justify-content: center;
   align-items: center;
   margin: auto;
-  margin-top: 30px;
+  margin-top: 20px;
   box-shadow: 50px 50px 100px 0 #121530, -50px -50px 100px 0 #272c5a;
 `;
 
