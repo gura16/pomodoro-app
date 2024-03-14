@@ -1,11 +1,17 @@
 import styled from "styled-components";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Timer from "./pomodorotimer";
 
-function Toggle() {
-  const [timer, setTimer] = useState<number>(1500);
-  const [defaultTimer, setDefaultTimer] = useState<number>(1500);
+function Toggle(props) {
+  const [timer, setTimer] = useState<number>(props.pomodoro);
+  const [defaultTimer, setDefaultTimer] = useState<number>(props.pomodoro);
   const [color, setColor] = useState<number>(0);
+
+  useEffect(() => {
+    // Update timer state whenever props.pomodoro changes
+    setTimer(props.pomodoro);
+    setDefaultTimer(props.pomodoro);
+  }, [props.pomodoro]); // Dependency array ensures effect runs when props.pomodoro changes
 
   return (
     <>
@@ -14,7 +20,7 @@ function Toggle() {
         <Togglecard>
           <Pomodoro
             onClick={() => {
-              setTimer(25), setDefaultTimer(25);
+              setTimer(props.pomodoro), setDefaultTimer(props.pomodoro);
               setColor(0);
             }}
             selected={timer === 25}

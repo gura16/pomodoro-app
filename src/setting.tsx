@@ -7,6 +7,14 @@ import { useState } from "react";
 
 function Setting() {
   const [settingButton, setSettingButton] = useState<boolean>(false);
+  const [pomodoro, SetPomodoro] = useState<number>(25);
+  const [pomodoroApply, setPomodoroApply] = useState<number>(pomodoro);
+
+  const settingsButton = () => {
+    setPomodoroApply(pomodoro);
+    setSettingButton(false);
+  };
+
   return (
     <div>
       {settingButton ? (
@@ -21,7 +29,12 @@ function Setting() {
             <TimechangerCard>
               <Card>
                 <Titletext>pomodoro</Titletext>
-                <PomodoroInput type="number" min="0"></PomodoroInput>
+                <PomodoroInput
+                  type="number"
+                  min="0"
+                  value={pomodoro}
+                  onChange={(event) => SetPomodoro(event.target.value)}
+                ></PomodoroInput>
               </Card>
               <Card>
                 <Titletext>short break</Titletext>
@@ -53,11 +66,11 @@ function Setting() {
               </Circlecard>
             </Colorchangercontainer>
           </TimechangerContainer>
-          <Apply>Apply</Apply>
+          <Apply onClick={settingsButton}>Apply</Apply>
         </Maincontainer>
       ) : null}
 
-      <Pomodoro />
+      <Pomodoro pomodoro={pomodoroApply * 60} />
       <Imgsetting
         onClick={() => setSettingButton(!settingButton)}
         src={setting_img}
