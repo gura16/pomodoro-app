@@ -8,10 +8,12 @@ function Timer({
   selectedOption,
   setSelectedOption,
   defaultTimer,
+  changecolor,
 }: {
   selectedOption: number;
   setSelectedOption: React.Dispatch<React.SetStateAction<number>>;
   defaultTimer: number;
+  changecolor: string;
 }) {
   const [progress, setProgress] = useState<number>(100);
   const [intervalId, setIntervalId] = useState<NodeJS.Timeout | null>(null);
@@ -72,7 +74,7 @@ function Timer({
               value={progress}
               strokeWidth={4}
               styles={{
-                path: { stroke: "#F87070" },
+                path: { stroke: changecolor },
                 trail: { stroke: "#161932" },
                 text: {
                   fontSize: "35px",

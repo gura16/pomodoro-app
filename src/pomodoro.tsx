@@ -35,6 +35,7 @@ function Toggle(props) {
             }}
             selected={timer === 25}
             color={color === 0}
+            changecolor={props.changecolor}
           >
             pomodoro
           </Pomodoro>
@@ -45,6 +46,7 @@ function Toggle(props) {
             }}
             selected={timer === 5}
             color={color === 1}
+            changecolor={props.changecolor}
           >
             short break
           </Shortbreak>
@@ -55,6 +57,7 @@ function Toggle(props) {
             }}
             selected={timer === 10}
             color={color === 2}
+            changecolor={props.changecolor}
           >
             long break
           </Longbreak>
@@ -64,6 +67,7 @@ function Toggle(props) {
         selectedOption={timer}
         setSelectedOption={setTimer}
         defaultTimer={defaultTimer}
+        changecolor={props.changecolor}
       />
     </>
   );
@@ -106,10 +110,12 @@ const Pomodoro = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  color: #d7e0ff;
+  color: ${(props) => (props.color ? "#1E213F" : "white")};
+  opacity: ${(props) => (props.color ? "" : "40%")};
   width: 105.2px;
   height: 48px;
-  background-color: ${(props) => (props.color ? "#f87070" : "transparent")};
+  background-color: ${(props) =>
+    props.color ? props.changecolor : "transparent"};
   border-radius: 40px;
   cursor: pointer;
 `;
@@ -123,10 +129,12 @@ const Shortbreak = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  color: #d7e0ff;
+  color: ${(props) => (props.color ? "#1E213F" : "white")};
+  opacity: ${(props) => (props.color ? "" : "40%")};
   width: 105.2px;
   height: 48px;
-  background-color: ${(props) => (props.color ? "#f87070" : "transparent")};
+  background-color: ${(props) =>
+    props.color ? props.changecolor : "transparent"};
   border-radius: 40px;
   cursor: pointer;
 `;
@@ -140,10 +148,12 @@ const Longbreak = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  color: #d7e0ff;
+  color: ${(props) => (props.color ? "#1E213F" : "white")};
+  opacity: ${(props) => (props.color ? "" : "40%")};
   width: 105.2px;
   height: 48px;
-  background-color: ${(props) => (props.color ? "#f87070" : "transparent")};
+  background-color: ${(props) =>
+    props.color ? props.changecolor : "transparent"};
   border-radius: 40px;
   cursor: pointer;
 `;

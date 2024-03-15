@@ -13,11 +13,14 @@ function Setting() {
   const [shortApply, setshortApply] = useState<number>(shortbreak);
   const [longbreak, setlongBreak] = useState<number>(10);
   const [longApply, setlongApply] = useState<number>(longbreak);
+  const [changeColor, setchangeColor] = useState<string>("#F87070");
+  const [applychangeColor, setapplychangeColor] = useState<string>(changeColor);
 
   const settingsButton = () => {
     setPomodoroApply(pomodoro);
     setshortApply(shortbreak);
     setlongApply(longbreak);
+    setapplychangeColor(changeColor);
     setSettingButton(false);
   };
 
@@ -27,7 +30,12 @@ function Setting() {
         <Maincontainer>
           <Titlecard>
             <Title>Settings</Title>
-            <Cancelimg onClick={() => setSettingButton(false)} src={cancel} />
+            <Cancelimg
+              onClick={() => {
+                setchangeColor(applychangeColor), setSettingButton(false);
+              }}
+              src={cancel}
+            />
           </Titlecard>
           <Hr />
           <TimechangerContainer>
@@ -39,7 +47,9 @@ function Setting() {
                   type="number"
                   min="0"
                   value={pomodoro}
-                  onChange={(event) => SetPomodoro(event.target.value)}
+                  onChange={(event) =>
+                    SetPomodoro(parseInt(event.target.value))
+                  }
                 ></PomodoroInput>
               </Card>
               <Card>
@@ -48,7 +58,9 @@ function Setting() {
                   type="number"
                   min="0"
                   value={shortbreak}
-                  onChange={(event) => setshortBreak(event.target.value)}
+                  onChange={(event) =>
+                    setshortBreak(parseInt(event.target.value))
+                  }
                 ></Shortinput>
               </Card>
               <Card>
@@ -57,7 +69,9 @@ function Setting() {
                   type="number"
                   min="0"
                   value={longbreak}
-                  onChange={(event) => setlongBreak(event.target.value)}
+                  onChange={(event) =>
+                    setlongBreak(parseInt(event.target.value))
+                  }
                 ></Longinput>
               </Card>
               <Hr />
@@ -74,11 +88,15 @@ function Setting() {
             <Colorchangercontainer>
               <Color>COLOR</Color>
               <Circlecard>
-                <Circle1>
-                  <img src={Path} />
+                <Circle1 onClick={() => setchangeColor("#F87070")}>
+                  {changeColor === "#F87070" ? <img src={Path} /> : null}
                 </Circle1>
-                <Circle2></Circle2>
-                <Circle3></Circle3>
+                <Circle2 onClick={() => setchangeColor("#70F3F8")}>
+                  {changeColor === "#70F3F8" ? <img src={Path} /> : null}
+                </Circle2>
+                <Circle3 onClick={() => setchangeColor("#D881F8")}>
+                  {changeColor === "#D881F8" ? <img src={Path} /> : null}
+                </Circle3>
               </Circlecard>
             </Colorchangercontainer>
           </TimechangerContainer>
@@ -90,6 +108,7 @@ function Setting() {
         pomodoro={pomodoroApply * 60}
         shortbreak={shortApply * 60}
         longbreak={longApply * 60}
+        changecolor={applychangeColor}
       />
       <Imgsetting
         onClick={() => setSettingButton(!settingButton)}
@@ -288,12 +307,18 @@ const Circle2 = styled.div`
   height: 40px;
   background-color: #70f3f8;
   border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 const Circle3 = styled.div`
   width: 40px;
   height: 40px;
   background-color: #d881f8;
   border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 const Apply = styled.div`
@@ -308,10 +333,11 @@ const Apply = styled.div`
   justify-content: center;
   align-items: center;
   color: white;
+  cursor: pointer;
 `;
 
 const Imgsetting = styled.img`
-  margin-top: 50px;
+  margin-top: 30px;
   margin-bottom: 20px;
   cursor: pointer;
 `;
