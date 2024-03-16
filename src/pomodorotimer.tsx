@@ -9,11 +9,13 @@ function Timer({
   setSelectedOption,
   defaultTimer,
   changecolor,
+  fontapply,
 }: {
   selectedOption: number;
   setSelectedOption: React.Dispatch<React.SetStateAction<number>>;
   defaultTimer: number;
   changecolor: string;
+  fontapply: string;
 }) {
   const [progress, setProgress] = useState<number>(100);
   const [intervalId, setIntervalId] = useState<NodeJS.Timeout | null>(null);
@@ -78,6 +80,7 @@ function Timer({
                 trail: { stroke: "#161932" },
                 text: {
                   fontSize: "35px",
+                  fontFamily: fontapply,
                   fontWeight: 700,
                   lineHeight: "99px",
                   letterSpacing: "-2px",
@@ -88,7 +91,11 @@ function Timer({
                 },
               }}
             />
-            <Pause onClick={intervalId ? handlePause : handleStart}>
+            <Pause
+              onClick={intervalId ? handlePause : handleStart}
+              fontapply={fontapply}
+              changecolor={changecolor}
+            >
               {intervalId ? "PAUSE" : "START"}
             </Pause>
           </div>
@@ -126,7 +133,7 @@ const CountdownTimercardsmall = styled.div`
 
 const Pause = styled.p`
   position: absolute;
-  font-family: "Kumbh Sans", sans-serif;
+  font-family: ${(props) => props.fontapply};
   font-size: 14px;
   font-weight: 700;
   line-height: 17px;
@@ -136,4 +143,7 @@ const Pause = styled.p`
   bottom: 60px;
   right: 70px;
   cursor: pointer;
+  &:hover {
+    color: ${(props) => props.changecolor};
+  }
 `;

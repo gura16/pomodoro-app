@@ -36,6 +36,7 @@ function Toggle(props) {
             selected={timer === 25}
             color={color === 0}
             changecolor={props.changecolor}
+            fontapply={props.fontapply}
           >
             pomodoro
           </Pomodoro>
@@ -47,6 +48,7 @@ function Toggle(props) {
             selected={timer === 5}
             color={color === 1}
             changecolor={props.changecolor}
+            fontapply={props.fontapply}
           >
             short break
           </Shortbreak>
@@ -58,6 +60,7 @@ function Toggle(props) {
             selected={timer === 10}
             color={color === 2}
             changecolor={props.changecolor}
+            fontapply={props.fontapply}
           >
             long break
           </Longbreak>
@@ -68,6 +71,7 @@ function Toggle(props) {
         setSelectedOption={setTimer}
         defaultTimer={defaultTimer}
         changecolor={props.changecolor}
+        fontapply={props.fontapply}
       />
     </>
   );
@@ -102,7 +106,7 @@ const Togglecard = styled.div`
 `;
 
 const Pomodoro = styled.div`
-  font-family: "Kumbh Sans", sans-serif;
+  font-family: ${(props) => props.fontapply};
   font-size: 12px;
   font-weight: 700;
   line-height: 15px;
@@ -121,7 +125,7 @@ const Pomodoro = styled.div`
 `;
 
 const Shortbreak = styled.div`
-  font-family: "Kumbh Sans", sans-serif;
+  font-family: ${(props) => props.fontapply};
   font-size: 12px;
   font-weight: 700;
   line-height: 15px;
@@ -140,7 +144,7 @@ const Shortbreak = styled.div`
 `;
 
 const Longbreak = styled.div`
-  font-family: "Kumbh Sans", sans-serif;
+  font-family: ${(props) => props.fontapply};
   font-size: 12px;
   font-weight: 700;
   line-height: 15px;

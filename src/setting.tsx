@@ -15,12 +15,24 @@ function Setting() {
   const [longApply, setlongApply] = useState<number>(longbreak);
   const [changeColor, setchangeColor] = useState<string>("#F87070");
   const [applychangeColor, setapplychangeColor] = useState<string>(changeColor);
+  const [font, setFont] = useState<string>(`"Kumbh Sans", sans-serif`);
+  const [fontapply, setfontApply] = useState<string>(font);
 
   const settingsButton = () => {
     setPomodoroApply(pomodoro);
     setshortApply(shortbreak);
     setlongApply(longbreak);
     setapplychangeColor(changeColor);
+    setfontApply(font);
+    setSettingButton(false);
+  };
+
+  const cancelButton = () => {
+    setchangeColor(applychangeColor),
+      setFont(fontapply),
+      SetPomodoro(pomodoroApply);
+    setshortBreak(shortApply);
+    setlongBreak(longApply);
     setSettingButton(false);
   };
 
@@ -30,12 +42,7 @@ function Setting() {
         <Maincontainer>
           <Titlecard>
             <Title>Settings</Title>
-            <Cancelimg
-              onClick={() => {
-                setchangeColor(applychangeColor), setSettingButton(false);
-              }}
-              src={cancel}
-            />
+            <Cancelimg onClick={cancelButton} src={cancel} />
           </Titlecard>
           <Hr />
           <TimechangerContainer>
@@ -79,9 +86,24 @@ function Setting() {
             <FontchangerContainer>
               <Fonttitle>FONT</Fonttitle>
               <Fontcard>
-                <Font>Aa</Font>
-                <Font>Aa</Font>
-                <Font>Aa</Font>
+                <Font1
+                  onClick={() => setFont(`"Kumbh Sans", sans-serif`)}
+                  setbackground={font === `"Kumbh Sans", sans-serif`}
+                >
+                  Aa
+                </Font1>
+                <Font2
+                  onClick={() => setFont(`"Roboto Slab", serif`)}
+                  setbackground={font === `"Roboto Slab", serif`}
+                >
+                  Aa
+                </Font2>
+                <Font3
+                  onClick={() => setFont(`"Space Mono", monospace`)}
+                  setbackground={font === `"Space Mono", monospace`}
+                >
+                  Aa
+                </Font3>
               </Fontcard>
               <Hr />
             </FontchangerContainer>
@@ -109,6 +131,7 @@ function Setting() {
         shortbreak={shortApply * 60}
         longbreak={longApply * 60}
         changecolor={applychangeColor}
+        fontapply={fontapply}
       />
       <Imgsetting
         onClick={() => setSettingButton(!settingButton)}
@@ -126,9 +149,9 @@ const Maincontainer = styled.div`
   background-color: white;
   border-radius: 20px;
   bottom: 30px;
+  top: 20px;
   position: absolute;
   z-index: 1;
-  /* position: relative; */
 `;
 
 const Titlecard = styled.div`
@@ -257,16 +280,52 @@ const Fontcard = styled.div`
   gap: 15px;
   margin-top: 15px;
 `;
-const Font = styled.div`
+const Font1 = styled.div`
   width: 40px;
   height: 40px;
-  background-color: #eff1fa;
+  background-color: ${(props) => (props.setbackground ? "#161932" : "#EFF1FA")};
+  color: ${(props) => (props.setbackground ? "white" : "#161932")};
   border-radius: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
   font-family: "Kumbh Sans", sans-serif;
   font-size: 15px;
+  font-weight: 700;
+  line-height: 19px;
+  letter-spacing: 0px;
+  text-align: left;
+  margin-bottom: 10px;
+`;
+
+const Font2 = styled.div`
+  width: 40px;
+  height: 40px;
+  background-color: ${(props) => (props.setbackground ? "#161932" : "#EFF1FA")};
+  color: ${(props) => (props.setbackground ? "white" : "#161932")};
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Roboto Slab", serif;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 19px;
+  letter-spacing: 0px;
+  text-align: left;
+  margin-bottom: 10px;
+`;
+
+const Font3 = styled.div`
+  width: 40px;
+  height: 40px;
+  background-color: ${(props) => (props.setbackground ? "#161932" : "#EFF1FA")};
+  color: ${(props) => (props.setbackground ? "white" : "#161932")};
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Space Mono", monospace;
   font-weight: 700;
   line-height: 19px;
   letter-spacing: 0px;
@@ -339,5 +398,6 @@ const Apply = styled.div`
 const Imgsetting = styled.img`
   margin-top: 30px;
   margin-bottom: 20px;
+  opacity: 60%;
   cursor: pointer;
 `;
