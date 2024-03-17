@@ -2,7 +2,15 @@ import styled from "styled-components";
 import React, { useState, useEffect } from "react";
 import Timer from "./pomodorotimer";
 
-function Toggle(props) {
+interface ToggleProps {
+  pomodoro: number;
+  shortbreak: number;
+  longbreak: number;
+  changecolor: string;
+  fontapply: string;
+}
+
+function Toggle(props: ToggleProps) {
   const [timer, setTimer] = useState<number>(props.pomodoro);
   const [defaultTimer, setDefaultTimer] = useState<number>(props.pomodoro);
   const [color, setColor] = useState<number>(0);
@@ -30,10 +38,10 @@ function Toggle(props) {
         <Togglecard>
           <Pomodoro
             onClick={() => {
-              setTimer(props.pomodoro), setDefaultTimer(props.pomodoro);
+              setTimer(props.pomodoro);
+              setDefaultTimer(props.pomodoro);
               setColor(0);
             }}
-            selected={timer === 25}
             color={color === 0}
             changecolor={props.changecolor}
             fontapply={props.fontapply}
@@ -42,10 +50,10 @@ function Toggle(props) {
           </Pomodoro>
           <Shortbreak
             onClick={() => {
-              setTimer(props.shortbreak), setDefaultTimer(props.shortbreak);
+              setTimer(props.shortbreak);
+              setDefaultTimer(props.shortbreak);
               setColor(1);
             }}
-            selected={timer === 5}
             color={color === 1}
             changecolor={props.changecolor}
             fontapply={props.fontapply}
@@ -54,10 +62,10 @@ function Toggle(props) {
           </Shortbreak>
           <Longbreak
             onClick={() => {
-              setTimer(props.longbreak), setDefaultTimer(props.longbreak);
+              setTimer(props.longbreak);
+              setDefaultTimer(props.longbreak);
               setColor(2);
             }}
-            selected={timer === 10}
             color={color === 2}
             changecolor={props.changecolor}
             fontapply={props.fontapply}
@@ -105,7 +113,11 @@ const Togglecard = styled.div`
   align-items: center;
 `;
 
-const Pomodoro = styled.div`
+const Pomodoro = styled.div<{
+  color: boolean;
+  changecolor: string;
+  fontapply: string;
+}>`
   font-family: ${(props) => props.fontapply};
   font-size: 12px;
   font-weight: 700;
@@ -124,7 +136,11 @@ const Pomodoro = styled.div`
   cursor: pointer;
 `;
 
-const Shortbreak = styled.div`
+const Shortbreak = styled.div<{
+  color: boolean;
+  changecolor: string;
+  fontapply: string;
+}>`
   font-family: ${(props) => props.fontapply};
   font-size: 12px;
   font-weight: 700;
@@ -143,7 +159,11 @@ const Shortbreak = styled.div`
   cursor: pointer;
 `;
 
-const Longbreak = styled.div`
+const Longbreak = styled.div<{
+  color: boolean;
+  changecolor: string;
+  fontapply: string;
+}>`
   font-family: ${(props) => props.fontapply};
   font-size: 12px;
   font-weight: 700;

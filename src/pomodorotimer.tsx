@@ -131,7 +131,7 @@ const CountdownTimercardsmall = styled.div`
   position: relative;
 `;
 
-const Pause = styled.p`
+const Pause = styled.p<{ fontapply: string; changecolor: string }>`
   position: absolute;
   font-family: ${(props) => props.fontapply};
   font-size: 14px;

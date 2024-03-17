@@ -28,9 +28,9 @@ function Setting() {
   };
 
   const cancelButton = () => {
-    setchangeColor(applychangeColor),
-      setFont(fontapply),
-      SetPomodoro(pomodoroApply);
+    setchangeColor(applychangeColor);
+    setFont(fontapply);
+    SetPomodoro(pomodoroApply);
     setshortBreak(shortApply);
     setlongBreak(longApply);
     setSettingButton(false);
@@ -280,7 +280,7 @@ const Fontcard = styled.div`
   gap: 15px;
   margin-top: 15px;
 `;
-const Font1 = styled.div`
+const Font1 = styled.div<{ setbackground: boolean }>`
   width: 40px;
   height: 40px;
   background-color: ${(props) => (props.setbackground ? "#161932" : "#EFF1FA")};
@@ -296,9 +296,10 @@ const Font1 = styled.div`
   letter-spacing: 0px;
   text-align: left;
   margin-bottom: 10px;
+  cursor: pointer;
 `;
 
-const Font2 = styled.div`
+const Font2 = styled.div<{ setbackground: boolean }>`
   width: 40px;
   height: 40px;
   background-color: ${(props) => (props.setbackground ? "#161932" : "#EFF1FA")};
@@ -314,9 +315,10 @@ const Font2 = styled.div`
   letter-spacing: 0px;
   text-align: left;
   margin-bottom: 10px;
+  cursor: pointer;
 `;
 
-const Font3 = styled.div`
+const Font3 = styled.div<{ setbackground: boolean }>`
   width: 40px;
   height: 40px;
   background-color: ${(props) => (props.setbackground ? "#161932" : "#EFF1FA")};
@@ -331,6 +333,7 @@ const Font3 = styled.div`
   letter-spacing: 0px;
   text-align: left;
   margin-bottom: 10px;
+  cursor: pointer;
 `;
 
 const Colorchangercontainer = styled.div``;
