@@ -2,7 +2,6 @@ import { CircularProgressbar } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 import styled from "styled-components";
 import { useEffect, useState } from "react";
-import { NodeJS } from "node";
 
 function Timer({
   selectedOption,
