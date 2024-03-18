@@ -25,11 +25,21 @@ Before you begin, ensure you have met the following requirements:
 
 ## Getting Started
 
+1.First of all you need to clone app repository from github:
+
 ```bash
 git clone https://github.com/gura16/pomodoro-app.git
+```
 
+2.Next step requires install all the dependencies.
+
+```bash
 npm install
+```
 
+3.To see project in action
+
+```bash
 npm run dev
 
 ```
