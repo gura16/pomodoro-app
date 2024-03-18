@@ -145,11 +145,11 @@ export default Setting;
 
 const Maincontainer = styled.div`
   width: 327px;
-  height: 549px;
+  height: 539px;
   background-color: white;
   border-radius: 20px;
   bottom: 30px;
-  top: 20px;
+  top: 10px;
   position: absolute;
   z-index: 1;
 `;
