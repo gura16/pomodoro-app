@@ -78,7 +78,7 @@ function Timer({
                 path: { stroke: changecolor },
                 trail: { stroke: "#161932" },
                 text: {
-                  fontSize: "34px",
+                  fontSize: "33px",
                   fontFamily: fontapply,
                   fontWeight: 700,
                   lineHeight: "99px",
