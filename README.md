@@ -1,6 +1,7 @@
 # pomodoro-app
 
 ## Table of Contents
+
 - [Prerequisites](#Prerequisites)
 - [Tech Stack](#TechStack)
 - [Getting Started](#GettingStarted)
@@ -8,10 +9,8 @@
 - [Deployment](#Deployment)
 - [Author](#Author)
 
-
 ## Prerequisites
+
 Before you begin, ensure you have met the following requirements:
 
--Node.js and npm installed (npm version 8 and up)
--Vite version 4.0.0
--TypeScript version 4.9.3
+- <img src="./public/npm.png" width="25" style="top:8px" /> \_npm @ 10.5.0\_
