@@ -57,8 +57,8 @@ npm run dev
 | |---|--- index.ts # export all components
 | |--- vite-env.d.ts # declare all types
 | |--- App.tsx # main page
-vercel.json # vercel file to make the routes work properly
-package.json # dependency manager configurations
+-vercel.json # vercel file to make the routes work properly
+-package.json # dependency manager configurations
 ```
 ## Deployment
 
