@@ -27,4 +27,9 @@ Before you begin, ensure you have met the following requirements:
 
 ```bash
 git clone https://github.com/gura16/pomodoro-app.git
+
+npm install
+
+npm run dev
+
 ```
