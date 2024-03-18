@@ -45,7 +45,7 @@ npm run dev
 ```
 
 ## Project Structure
-
+```bash
 |--- src
 | |--- components # reusable components
 | |---|--- index.ts # export all components
@@ -57,9 +57,9 @@ npm run dev
 | |---|--- index.ts # export all components
 | |--- vite-env.d.ts # declare all types
 | |--- App.tsx # main page
-vercel.json # vercel file to make the routes work properly
-package.json # dependency manager configurations
-
+-vercel.json # vercel file to make the routes work properly
+-package.json # dependency manager configurations
+```
 ## Deployment
 
 Before every deployment you need to create build file.
