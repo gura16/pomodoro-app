@@ -43,3 +43,34 @@ npm install
 npm run dev
 
 ```
+
+## Project Structure
+
+|--- src
+| |--- components # reusable components
+| |---|--- index.ts # export all components
+| |--- pages
+| |---|--- index.ts # export all pages
+| |--- styled-components # all components' styles
+| |---|--- components # reusable components
+| |---|--- GlobalStyle
+| |---|--- index.ts # export all components
+| |--- vite-env.d.ts # declare all types
+| |--- App.tsx # main page
+vercel.json # vercel file to make the routes work properly
+package.json # dependency manager configurations
+
+## Deployment
+
+Before every deployment you need to create build file.
+
+```bash
+npm run build
+
+```
+
+after this you can use this file to deploy project on server.
+
+## Author
+
+[My LinkedIn Profile](https://www.linkedin.com/in/gurami-kvakhadze-03b06a246/)
